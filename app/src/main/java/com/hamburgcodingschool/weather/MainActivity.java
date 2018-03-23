@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         WeatherService service = retrofit.create(WeatherService.class);
+
         Call<City> cityCall = service.getWeather("Hamburg", getString(R.string.OpenWeatherMapKey));
         cityCall.enqueue(new Callback<City>() {
             @Override
