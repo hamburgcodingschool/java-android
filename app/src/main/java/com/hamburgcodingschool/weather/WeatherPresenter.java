@@ -29,7 +29,7 @@ public class WeatherPresenter implements WeatherRepository.WeatherRecipient {
         if (city == null) {
             weatherView.setWeather(ERROR_TEXT);
         } else {
-            String weather = city.weather.get(0).description;
+            String weather = city.getWeather().get(0).getDescription();
             weatherView.setWeather(weather);
         }
     }
