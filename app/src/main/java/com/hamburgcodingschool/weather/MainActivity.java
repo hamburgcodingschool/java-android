@@ -2,6 +2,7 @@ package com.hamburgcodingschool.weather;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements WeatherView {
@@ -17,8 +18,10 @@ public class MainActivity extends AppCompatActivity implements WeatherView {
 
         WeatherRepository repository = new WeatherRepository(getString(R.string.OpenWeatherMapKey));
         WeatherPresenter presenter = new WeatherPresenter(this, repository);
-        repository.setRecipient(presenter);
+        repository.setCallback(presenter);
         presenter.getWeather("Hamburg");
+
+        Log.d("MainActivity", "We created a weather activity");
     }
 
     @Override

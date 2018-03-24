@@ -20,7 +20,7 @@ public class WeatherRepository {
 
     private final WeatherService service;
     private final String apiKey;
-    private WeatherRecipient recipient;
+    private WeatherCallback callback;
 
     public WeatherRepository(String apiKey) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -31,8 +31,8 @@ public class WeatherRepository {
         this.apiKey = apiKey;
     }
 
-    public void setRecipient(WeatherRecipient recipient) {
-        this.recipient = recipient;
+    public void setCallback(WeatherCallback callback) {
+        this.callback = callback;
     }
 
     public void getWeather(String city) {
@@ -41,17 +41,17 @@ public class WeatherRepository {
             @Override
             public void onResponse(@NonNull Call<City> call, @NonNull Response<City> response) {
                 City city = response.body();
-                recipient.receiveWeather(city);
+                callback.receiveWeather(city);
             }
 
             @Override
             public void onFailure(@NonNull Call<City> call, @NonNull Throwable t) {
-                recipient.receiveWeather(null);
+                callback.receiveWeather(null);
             }
         });
     }
 
-    public interface WeatherRecipient {
+    public interface WeatherCallback {
 
         void receiveWeather(@Nullable City city);
     }
