@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="OpenWeatherMapKey">5aa80dd64429a526f1f80921fc784bb7</string>
 </resources>

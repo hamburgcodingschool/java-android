@@ -59,7 +59,7 @@ public class WeatherPresenterTest {
         WeatherPresenter presenter = new WeatherPresenter(new WeatherView() {
             @Override
             public void setWeather(String weather) {
-                assertEquals(ERROR_TEXT, weather);
+                assertEquals(Companion.getERROR_TEXT(), weather);
             }
         }, new WeatherRepository("") {
             @Override
